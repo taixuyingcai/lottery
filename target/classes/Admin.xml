@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.service.admin.IAdminDao">
+    <sql id="allAttribute">
+        <![CDATA[
+            id,
+            uid,
+            name,
+            roleType,
+            createTime,
+            updateTime,
+            isDel
+        ]]>
+    </sql>
+    <sql id="tableName">
+        t_admin
+    </sql>
+
+    <insert id="save" parameterType="com.lottery.model.admin.Admin" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        <include refid="tableName"/>
+        (uid,name,roleType,createTime,updateTime,isDel)
+        VALUES(#{uid},#{name},#{roleType},#{createTime},#{updateTime},#{isDel})
+    </insert>
+
+    <select id="get" parameterType="long" resultType="com.lottery.model.admin.Admin">
+        select
+        <include refid="allAttribute"/>
+        from <include refid="tableName"/>
+        where isDel = 0
+        and id=#{id}
+    </select>
+
+    <update id="update" parameterType="com.lottery.model.admin.Admin">
+        update <include refid="tableName"/>
+        <set>
+            name = #{name},
+            uid = #{uid},
+            roleType = #{roleType},
+            updateTime=#{updateTime}
+        </set>
+        where isDel = 0
+        and id=#{id}
+    </update>
+
+    <update id="delete" parameterType="long">
+        update <include refid="tableName"/>
+        <set>
+            isDel=1,
+            updateTime=#{updateTime}
+        </set>
+        where isDel = 0
+        and id = #{id}
+    </update>
+
+
+    <select id="getById" resultType="com.lottery.model.admin.Admin">
+        select
+        <include refid="allAttribute"/>
+        from
+        <include refid="tableName"/>
+        where isDel=0
+        and id = #{id}
+    </select>
+
+    <select id="getCount" resultType="int">
+        <![CDATA[
+            select count(*)
+        ]]>
+        from
+        <include refid="tableName"/>
+        where isDel=0
+        <if test="uid != null and uid != ''">
+            and uid like CONCAT('%', #{uid}, '%')
+        </if>
+        <if test="name != null and name != ''">
+            and name like CONCAT('%', #{name}, '%')
+        </if>
+    </select>
+    <select id="getForGrid" resultType="com.lottery.model.admin.Admin">
+        select
+        <include refid="allAttribute"/>
+        from
+        <include refid="tableName"/>
+        where isDel=0
+        <if test="uid != null and uid != ''">
+            and uid like CONCAT('%', #{uid}, '%')
+        </if>
+        <if test="name != null and name != ''">
+            and name like CONCAT('%', #{name}, '%')
+        </if>
+        <if test="page != null and pageSize != null">
+          limit #{page},#{pageSize}
+        </if>
+    </select>
+
+
+    <select id="getAll" resultType="com.lottery.model.admin.Admin">
+        SELECT
+        <include refid="allAttribute"/>
+        FROM
+        <include refid="tableName"/>
+        WHERE isDel = 0
+    </select>
+
+
+</mapper>
