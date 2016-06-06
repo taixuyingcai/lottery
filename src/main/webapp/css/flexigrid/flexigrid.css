@@ -1,7 +1,5 @@
-@charset
-UTF-8
+@charset "utf-8";
 
-;
 .flexigrid div.fbutton .add {
     background: url(../../images/flexigrid/add.png) no-repeat center left;
 }

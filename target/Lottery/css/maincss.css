@@ -203,7 +203,7 @@ a.logout, a:hover.logout {
 }
 
 .tab_ads {
-    repeat-x 0px bottom;
+    repeat-x: 0px bottom;
     position: relative;
     margin-top: 20px;
     margin-bottom: 20px;

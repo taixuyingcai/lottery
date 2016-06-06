@@ -4,13 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <link type="text/css" href="/css/flexigrid/flexigrid.css">
-    <link type="text/css" href="/css/maincss.css">
-    <script type="text/javascript" src="/js/comm/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="/js/comm/flexigrid.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/flexigrid/flexigrid.css" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="/css/maincss.css" charset="utf-8"/>
+    <script type="text/javascript" src="/js/commons/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="/js/commons/flexigrid.js"></script>
     <script type="text/javascript" src="/js/admin/admin.js"></script>
 </head>
 <body>
+<%@ include file="../commons/header.jsp" %>
     <div class="content">
         <div class="ads_title"><span class="title_tx">账号管理</span></div>
         <div class="cb">
@@ -24,5 +25,6 @@
         </div>
     </div>
 </div>
+<%@ include file="../commons/footer.jsp" %>
 </body>
 </html>
