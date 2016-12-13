@@ -1,6 +1,9 @@
 package com.lottery.dal;
 
+import com.sun.tools.corba.se.idl.constExpr.Times;
+
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * 所有实体类的基类，都要有一个id字段
@@ -11,6 +14,7 @@ import java.io.Serializable;
 public abstract class IMybatisEntity implements Serializable{
 
     protected long id;
+    protected Timestamp createTime;
 
     public void setId(long id) {
         this.id = id;
@@ -18,5 +22,13 @@ public abstract class IMybatisEntity implements Serializable{
 
     public long getId() {
         return id;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 }

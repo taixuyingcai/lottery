@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <mode>zk</mode>
+    <path>/aaa/bbb/ccc</path>
+    <services>
+        <service name="service1" host="127.0.0.1" port="8989" auth="" dbIndex="1"></service>
+    </services>
+    <groups>
+        <group name="group1">
+            <sevices>
+                <sevice name="group_service1" weight="1"></sevice>
+            </sevices>
+            <properties>
+                <property name="count">1</property>
+                <property name="sum">2</property>
+
+            </properties>
+        </group>
+    </groups>
+</root>

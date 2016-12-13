@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.service.bill.IBillDao">
+    <sql id="allAttribute">
+        <![CDATA[
+            id,
+            name,
+            title,
+            type,
+            count,
+            cost,
+            status,
+            createTime,
+            updateTime
+        ]]>
+    </sql>
+    <sql id="tableName">
+        t_bill
+    </sql>
+
+    <insert id="save" parameterType="com.lottery.model.bill.Bill" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        <include refid="tableName"/>
+        (id,name,title,type,count,cost,status,createTime,updateTime)
+        VALUES(#{id},#{name},#{title},#{type},#{count},#{cost},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <select id="get" parameterType="long" resultType="com.lottery.model.bill.Bill">
+        select
+        <include refid="allAttribute"/>
+        from <include refid="tableName"/>
+        where id=#{id}
+    </select>
+
+    <update id="update" parameterType="com.lottery.model.bill.Bill">
+        update <include refid="tableName"/>
+        <set>
+            name = #{name},
+            title = #{title},
+            type = #{type},
+            updateTime=#{updateTime}
+        </set>
+        where id=#{id}
+    </update>
+
+
+    <select id="getCount" resultType="int">
+        <![CDATA[
+            select count(*)
+        ]]>
+        from
+        <include refid="tableName"/>
+        where 1=1
+        <if test="name != null and name != ''">
+            <bind name="newName" value="'%' + name + '%'"/>
+            and name like #{newName}
+        </if>
+    </select>
+    <select id="getList" resultType="com.lottery.model.bill.Bill">
+        select
+        <include refid="allAttribute"/>
+        from
+        <include refid="tableName"/>
+        where 0=0
+        <if test="name != null and name != ''">
+            <bind name="newName" value="'%' + name + '%'"/>
+            and name like #{newName}
+        </if>
+        <if test="pageIndex != null and pageSize != null">
+          limit #{pageIndex},#{pageSize}
+        </if>
+    </select>
+
+
+</mapper>

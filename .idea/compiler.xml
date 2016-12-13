@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="Lottery" />
+        <module name="NIODemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -6,6 +6,7 @@ import java.awt.*;
 import java.util.List;
 
 /**
+ * flexigrid请求数据封装
  * User: ryanshi@tcl.com
  * Date: 2016-06-01
  * Time: 13:57

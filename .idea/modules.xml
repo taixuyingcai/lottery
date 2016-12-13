@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Lottery.iml" filepath="$PROJECT_DIR$/Lottery.iml" />
+      <module fileurl="file://D:/worktools/NIODemo/NIODemo.iml" filepath="D:/worktools/NIODemo/NIODemo.iml" />
     </modules>
   </component>
 </project>
